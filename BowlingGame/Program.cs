@@ -11,7 +11,7 @@ builder.Services
 	.AddEndpointsApiExplorer()
 	.AddSwaggerGen()
 	.AddSingleton<IGameService, GameService>()
-	.AddSingleton<IBowler, Bowler>()
+	.AddSingleton<IBowlService, BowlService>()
 	.AddSingleton<IScoreCalculator, ScoreCalculator>();
 
 WebApplication app = builder.Build();

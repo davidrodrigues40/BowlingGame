@@ -2,6 +2,6 @@
 
 public interface IGame
 {
-	Dictionary<int, IFrame> Frames { get; set; }
-	int Score { get; set; }
+	IEnumerable<IBowler> Bowlers { get; set; }
+	IScoreCard? Winner { get; set; }
 }

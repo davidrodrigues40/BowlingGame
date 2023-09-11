@@ -2,7 +2,7 @@
 
 namespace BowlingGame.Services;
 
-public class Bowler : IBowler
+public class BowlService : IBowlService
 {
 	private readonly Random _random = new();
 

@@ -1,6 +1,6 @@
 ﻿namespace BowlingGame.Abstractions.Services;
 
-public interface IBowler
+public interface IBowlService
 {
 	int RollFirstBall();
 	int RollSecondBall(int firstBall);

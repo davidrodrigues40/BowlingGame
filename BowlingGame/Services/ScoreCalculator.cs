@@ -1,5 +1,6 @@
 ﻿using BowlingGame.Abstractions.Models;
 using BowlingGame.Abstractions.Services;
+using BowlingGame.Models;
 
 namespace BowlingGame.Services;
 
@@ -7,32 +8,54 @@ public class ScoreCalculator : IScoreCalculator
 {
 	public void CalculateScore(IGame game)
 	{
-		for (var x = 1; x <= 10; x++)
-		{
-			IFrame frame = game.Frames[x];
-			IFrame nextFrame;
+		foreach(IBowler bowler in game.Bowlers)
+            CalculateBowlerScore(bowler);
 
-			switch (x)
-			{
-				case 10:
-					ProcessTenthFrame(frame);
-					break;
-				case 9:
-					nextFrame = game.Frames[x + 1];
-					ProcessNinthFrame(frame, nextFrame);
-					break;
-				default:
-				{
-					nextFrame = game.Frames[x + 1];
-					IFrame nextNextFrame = game.Frames[x + 2];
-					ProcessFrame(frame, nextFrame, nextNextFrame);
-					break;
-				}
-			}
+		CalculateWinner(game);
+    }
+    private void CalculateWinner(IGame game)
+    {
+        ScoreCard winner =new() { Name = game.Bowlers.First().Name, Score = game.Bowlers.First().Score };
 
-			game.Score += frame.Score;
-		}
-	}
+        foreach (IBowler bowler in game.Bowlers)
+        {
+            if (bowler.Score > winner.Score)
+                winner = winner with { Name = bowler.Name, Score = bowler.Score };
+        }
+
+        game.Winner = winner;
+    }
+
+    private static void CalculateBowlerScore(IBowler bowler)
+	{
+        bowler.Score = 0;
+
+        for (var x = 1; x <= 10; x++)
+        {
+            IFrame frame = bowler.Frames[x];
+            IFrame nextFrame;
+
+            switch (x)
+            {
+                case 10:
+                    ProcessTenthFrame(frame);
+                    break;
+                case 9:
+                    nextFrame = bowler.Frames[x + 1];
+                    ProcessNinthFrame(frame, nextFrame);
+                    break;
+                default:
+                    {
+                        nextFrame = bowler.Frames[x + 1];
+                        IFrame nextNextFrame = bowler.Frames[x + 2];
+                        ProcessFrame(frame, nextFrame, nextNextFrame);
+                        break;
+                    }
+            }
+
+            bowler.Score += frame.Score;
+        }
+    }
 
 	private static void ProcessFrame(IFrame frame, IFrame nextFrame, IFrame nextNextFrame)
 	{

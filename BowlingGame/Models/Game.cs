@@ -4,6 +4,6 @@ namespace BowlingGame.Models;
 
 public class Game : IGame
 {
-	public Dictionary<int, IFrame> Frames { get; set; } = new();
-	public int Score { get; set; } = 0;
+    public IEnumerable<IBowler> Bowlers { get; set; } = new List<IBowler>();
+    public IScoreCard? Winner { get; set; }
 }

@@ -16,22 +16,24 @@ namespace BowlingGame.Controllers
 			_gameService = gameService;
 		}
 
-		[HttpGet]
-		public IActionResult BowlGame([FromQuery]string[] players)
+		[HttpPost]
+		[ProducesResponseType(typeof(Game), 200)]
+		public IActionResult Bowl(List<Player> players)
 		{
-			if (players == null || players.Length == 0)
+			if (players == null || players.Count == 0)
 				return BowlGame();
 
-			List<IBowler> bowlers = new ();
+			List<Bowler> bowlers = new ();
 			foreach (var player in players)
 			{
                 // add player to game
-				bowlers.Add( new Bowler() { Name = player });
+				bowlers.Add( new Bowler() {  Name = player.Name });
             }
 
 			IGame game = _gameService.NewGame(bowlers);
+			game = _gameService.PlayGame(game);
 
-			return Ok(_gameService.PlayGame(game));
+			return Ok(game);
 
 		}
 

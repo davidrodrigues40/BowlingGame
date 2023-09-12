@@ -12,7 +12,8 @@ builder.Services
 	.AddSwaggerGen()
 	.AddSingleton<IGameService, GameService>()
 	.AddSingleton<IBowlService, BowlService>()
-	.AddSingleton<IScoreCalculator, ScoreCalculator>();
+	.AddSingleton<IScoreCalculator, ScoreCalculator>()
+	.AddCors();
 
 WebApplication app = builder.Build();
 
@@ -28,5 +29,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.Run();

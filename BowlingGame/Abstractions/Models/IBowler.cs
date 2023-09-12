@@ -1,4 +1,6 @@
-﻿namespace BowlingGame.Abstractions.Models
+﻿using BowlingGame.Models;
+
+namespace BowlingGame.Abstractions.Models
 {
     public interface IBowler
     {

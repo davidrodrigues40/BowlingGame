@@ -2,8 +2,8 @@
 
 namespace BowlingGame.Models;
 
-public class Game : IGame
+public class Game<T> : IGame<T>
 {
-    public IEnumerable<IBowler> Bowlers { get; set; } = new List<IBowler>();
+    public IEnumerable<T> Bowlers { get; set; } = new List<T>();
     public IScoreCard? Winner { get; set; }
 }

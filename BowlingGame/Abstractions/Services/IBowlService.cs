@@ -1,8 +1,13 @@
-﻿namespace BowlingGame.Abstractions.Services;
+﻿using BowlingGame.Enums;
+
+namespace BowlingGame.Abstractions.Services;
 
 public interface IBowlService
 {
 	int RollFirstBall();
-	int RollSecondBall(int firstBall);
-	int RollBall(int pinsRemaining);
+    int RollFirstBall(BowlerRating rating);
+    int RollSecondBall(int firstBall);
+    int RollSecondBall(int firstBall, BowlerRating rating);
+    int RollBall(int pinsRemaining);
+    int RollBall(int pinsRemating, BowlerRating rating);
 }

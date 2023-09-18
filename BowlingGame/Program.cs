@@ -12,8 +12,11 @@ builder.Services
 	.AddSwaggerGen()
 	.AddSingleton<IGameService, GameService>()
 	.AddSingleton<IBowlService, BowlService>()
+	.AddSingleton<IRatedGameService, RatedGameService>()
 	.AddSingleton<IScoreCalculator, ScoreCalculator>()
 	.AddCors();
+
+builder.Services.AddControllers().AddNewtonsoftJson();
 
 WebApplication app = builder.Build();
 

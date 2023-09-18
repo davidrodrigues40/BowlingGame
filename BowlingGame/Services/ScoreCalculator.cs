@@ -1,60 +1,85 @@
 ﻿using BowlingGame.Abstractions.Models;
 using BowlingGame.Abstractions.Services;
 using BowlingGame.Models;
+using System.Diagnostics;
 
 namespace BowlingGame.Services;
 
 public class ScoreCalculator : IScoreCalculator
 {
-	public void CalculateScore(IGame game)
+	public void CalculateScore(IGame<IBowler> game)
 	{
 		foreach(IBowler bowler in game.Bowlers)
             CalculateBowlerScore(bowler);
 
-		CalculateWinner(game);
+		game.Winner = CalculateWinner(game.Bowlers);
     }
-    private void CalculateWinner(IGame game)
-    {
-        ScoreCard winner =new() { Name = game.Bowlers.First().Name, Score = game.Bowlers.First().Score };
 
-        foreach (IBowler bowler in game.Bowlers)
+	public void CalculateScore(IGame<IRatedBowler> game)
+	{
+        foreach (IRatedBowler bowler in game.Bowlers)
+		{
+            CalculateBowlerScore(bowler);
+			if(bowler.Score == 0)
+				Debugger.Break();
+        }
+            
+
+        game.Winner = CalculateWinner(game.Bowlers);
+    }
+
+    private IScoreCard CalculateWinner(IEnumerable<IBowler> bowlers)
+    {
+        ScoreCard winner =new() { Name = bowlers.First().Name, Score = bowlers.First().Score };
+
+        foreach (IBowler bowler in bowlers)
         {
+			if(bowler.Score == winner.Score && bowler.Name != winner.Name)
+				winner.Name += $" and {bowler.Name}";
+            else
             if (bowler.Score > winner.Score)
                 winner = winner with { Name = bowler.Name, Score = bowler.Score };
         }
 
-        game.Winner = winner;
+		return winner;
     }
 
     private static void CalculateBowlerScore(IBowler bowler)
 	{
         bowler.Score = 0;
-
-        for (var x = 1; x <= 10; x++)
-        {
-            IFrame frame = bowler.Frames[x];
-            IFrame nextFrame;
-
-            switch (x)
+		try
+		{
+            for (var x = 1; x <= 10; x++)
             {
-                case 10:
-                    ProcessTenthFrame(frame);
-                    break;
-                case 9:
-                    nextFrame = bowler.Frames[x + 1];
-                    ProcessNinthFrame(frame, nextFrame);
-                    break;
-                default:
-                    {
-                        nextFrame = bowler.Frames[x + 1];
-                        IFrame nextNextFrame = bowler.Frames[x + 2];
-                        ProcessFrame(frame, nextFrame, nextNextFrame);
-                        break;
-                    }
-            }
+                IFrame frame = bowler.Frames[x];
+                IFrame nextFrame;
 
-            bowler.Score += frame.Score;
+                switch (x)
+                {
+                    case 10:
+                        ProcessTenthFrame(frame);
+                        break;
+                    case 9:
+                        nextFrame = bowler.Frames[x + 1];
+                        ProcessNinthFrame(frame, nextFrame);
+                        break;
+                    default:
+                        {
+                            nextFrame = bowler.Frames[x + 1];
+                            IFrame nextNextFrame = bowler.Frames[x + 2];
+                            ProcessFrame(frame, nextFrame, nextNextFrame);
+                            break;
+                        }
+                }
+
+                bowler.Score += frame.Score;
+            }
         }
+		catch(Exception e)
+		{
+			Debugger.Break();
+		}
+        
     }
 
 	private static void ProcessFrame(IFrame frame, IFrame nextFrame, IFrame nextNextFrame)
@@ -106,4 +131,5 @@ public class ScoreCalculator : IScoreCalculator
 		else
 			ProcessOpenFrame(frame);
 	}
+
 }

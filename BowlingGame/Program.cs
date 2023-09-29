@@ -1,4 +1,4 @@
-using BowlingGame.Bff.DependencyInjection;
+using BowlingGame.Api.DependencyInjection;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

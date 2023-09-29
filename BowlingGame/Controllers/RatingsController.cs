@@ -1,7 +1,7 @@
 ﻿using BowlingGame.Abstractions.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BowlingGame.Bff.Controllers;
+namespace BowlingGame.Api.Controllers;
 [Route("api/ratings")]
 [ApiController]
 public class RatingsController : ControllerBase

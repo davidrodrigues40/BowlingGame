@@ -1,7 +1,7 @@
 ﻿using BowlingGame.Abstractions.Services;
 using BowlingGame.Services;
 
-namespace BowlingGame.Bff.DependencyInjection;
+namespace BowlingGame.Api.DependencyInjection;
 
 public static class DependencyInjection
 {

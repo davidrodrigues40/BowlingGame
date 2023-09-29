@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Bff", "BowlingGame\BowlingGame.Bff.csproj", "{854D0A27-F68E-4F4C-B71C-103965DAD8D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Api", "BowlingGame\BowlingGame.Api.csproj", "{854D0A27-F68E-4F4C-B71C-103965DAD8D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.Abstractions", "BowlingGame.Abstractions\BowlingGame.Abstractions.csproj", "{4F134B62-C3F1-4A18-AA49-7EDAF7E58665}"
 EndProject

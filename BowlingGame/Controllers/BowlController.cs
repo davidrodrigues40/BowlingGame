@@ -3,7 +3,7 @@ using BowlingGame.Abstractions.Services;
 using BowlingGame.Dto.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BowlingGame.Controllers;
+namespace BowlingGame.Bff.Controllers;
 
 [Route("api/")]
 [ApiController]

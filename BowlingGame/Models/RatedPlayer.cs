@@ -5,6 +5,6 @@ namespace BowlingGame.Models
 {
     public record RatedPlayer : Player, IRatedPlayer
     {
-        public BowlerRating Rating { get; set; }
+        public Enums.BowlerRating Rating { get; set; }
     }
 }

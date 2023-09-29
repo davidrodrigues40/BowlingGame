@@ -1,5 +1,4 @@
-using BowlingGame.Abstractions.Services;
-using BowlingGame.Services;
+using BowlingGame.DependencyInjection;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -8,13 +7,10 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services
-	.AddEndpointsApiExplorer()
-	.AddSwaggerGen()
-	.AddSingleton<IGameService, GameService>()
-	.AddSingleton<IBowlService, BowlService>()
-	.AddSingleton<IRatedGameService, RatedGameService>()
-	.AddSingleton<IScoreCalculator, ScoreCalculator>()
-	.AddCors();
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen()
+    .AddServices()
+    .AddCors();
 
 builder.Services.AddControllers().AddNewtonsoftJson();
 
@@ -23,8 +19,8 @@ WebApplication app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-	app.UseSwagger();
-	app.UseSwaggerUI();
+    _ = app.UseSwagger();
+    _ = app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

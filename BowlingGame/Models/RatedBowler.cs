@@ -5,7 +5,7 @@ namespace BowlingGame.Models
 {
     public class RatedBowler : Bowler, IRatedBowler
     {
-        public BowlerRating Rating { get; set; }
+        public Enums.BowlerRating Rating { get; set; }
 
         public RatedBowler(): base() { }
     }

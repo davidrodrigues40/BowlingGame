@@ -4,6 +4,7 @@ using BowlingGame.Core.Enums;
 using BowlingGame.Dto.Models;
 
 namespace BowlingGame.Services;
+
 public class RatingService : IRatingService
 {
     public IEnumerable<IBowlerRating> GetRatings()

@@ -7,8 +7,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Abstractions\**" />
+    <Compile Remove="Enums\**" />
+    <Compile Remove="Models\**" />
+    <Compile Remove="Services\**" />
+    <Content Remove="Abstractions\**" />
+    <Content Remove="Enums\**" />
+    <Content Remove="Models\**" />
+    <Content Remove="Services\**" />
+    <EmbeddedResource Remove="Abstractions\**" />
+    <EmbeddedResource Remove="Enums\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Abstractions\**" />
+    <None Remove="Enums\**" />
+    <None Remove="Models\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.11" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BowlingGame.Abstractions\BowlingGame.Abstractions.csproj" />
+    <ProjectReference Include="..\BowlingGame.Core\BowlingGame.Core.csproj" />
+    <ProjectReference Include="..\BowlingGame.Dto\BowlingGame.Dto.csproj" />
+    <ProjectReference Include="..\BowlingGame.Services\BowlingGame.Services.csproj" />
   </ItemGroup>
 
 </Project>

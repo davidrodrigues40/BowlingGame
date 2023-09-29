@@ -1,6 +1,6 @@
 ﻿using BowlingGame.Abstractions.Models;
 using BowlingGame.Abstractions.Services;
-using BowlingGame.Models;
+using BowlingGame.Dto.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BowlingGame.Controllers;

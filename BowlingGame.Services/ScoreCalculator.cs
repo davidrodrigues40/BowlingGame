@@ -27,6 +27,16 @@ public class ScoreCalculator : IScoreCalculator
         game.Winner = CalculateWinner(game.Bowlers);
     }
 
+    public Dictionary<int, IFrame> ClearScoreSheet()
+    {
+        var frames = new Dictionary<int, IFrame>();
+
+        for (int x = 1; x <= 10; x++)
+            frames.Add(x, new Frame());
+
+        return frames;
+    }
+
     private static IScoreCard CalculateWinner(IEnumerable<IBowler> bowlers)
     {
         ScoreCard winner = new() { Name = bowlers.First().Name, Score = bowlers.First().Score };

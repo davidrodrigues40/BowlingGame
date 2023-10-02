@@ -4,7 +4,7 @@ using BowlingGame.Dto.Models;
 
 namespace BowlingGame.Services;
 
-public class GameService : IGameService
+public class GameService : IGameService<IBowler>
 {
     private readonly IScoreCalculator _scoreCalculator;
     private readonly IBowlService _bowlService;
@@ -21,21 +21,23 @@ public class GameService : IGameService
 
     public IGame<IBowler> NewGame(IEnumerable<IBowler> bowlers)
     {
+        _game.Bowlers = bowlers;
+
         try
         {
-            _game.Bowlers = bowlers;
-            foreach (IBowler item in bowlers)
+            foreach (IBowler item in _game.Bowlers)
             {
-                item.Frames = ClearScoreSheet();
+                item.Frames = _scoreCalculator.ClearScoreSheet();
                 item.Score = 0;
             }
+
+            return _game;
         }
         catch (Exception)
         {
-            // log/handle exception
+            // TODO: log exception
+            throw;
         }
-
-        return _game;
     }
 
     public IGame<IBowler> PlayGame(IGame<IBowler> game)
@@ -44,21 +46,18 @@ public class GameService : IGameService
         {
             for (int frame = 1; frame <= 10; frame++)
             {
-                // play frame
-                foreach (IBowler bowler in game.Bowlers)
-                {
-                    PlayFrame(frame, bowler);
-                }
+                PlayFrame(frame, game.Bowlers.ElementAt(0));
             }
 
             _scoreCalculator.CalculateScore(game);
+
+            return game;
         }
         catch (Exception)
         {
-            // log/handle exception
+            // TODO: log exception
+            throw;
         }
-
-        return game;
     }
 
     private void PlayFrame(int frame, IBowler bowler)
@@ -70,23 +69,16 @@ public class GameService : IGameService
         }
 
         int firstBallPinCount = _bowlService.RollFirstBall();
-        bowler = AddRole(bowler, frame, 1, firstBallPinCount);
+        AddRole(bowler, frame, 1, firstBallPinCount);
 
-        if (firstBallPinCount == 10 && frame < 10)
+        if (firstBallPinCount == 10)
         {
             return;
         }
 
         int secondBallPinCount = _bowlService.RollSecondBall(firstBallPinCount);
 
-        bowler = AddRole(bowler, frame, 2, secondBallPinCount);
-
-        if (frame != 10) return;
-
-        if (firstBallPinCount + secondBallPinCount < 10) return;
-
-        int thirdBall = _bowlService.RollBall(10 - secondBallPinCount);
-        _ = AddRole(bowler, frame, 3, thirdBall);
+        AddRole(bowler, frame, 2, secondBallPinCount);
     }
 
     private void PlayTenthFrame(int frame, IBowler bowler)
@@ -95,11 +87,11 @@ public class GameService : IGameService
         int secondBallPinCount;
         int? thirdBallPinCount = null;
 
-        _ = AddRole(bowler, frame, 1, firstBallPinCount);
+        AddRole(bowler, frame, 1, firstBallPinCount);
 
         secondBallPinCount = firstBallPinCount == 10 ? _bowlService.RollFirstBall() : _bowlService.RollSecondBall(firstBallPinCount);
 
-        _ = AddRole(bowler, frame, 2, secondBallPinCount);
+        AddRole(bowler, frame, 2, secondBallPinCount);
 
         if (secondBallPinCount == 10) // strike on second ball
             thirdBallPinCount = _bowlService.RollFirstBall();
@@ -107,23 +99,9 @@ public class GameService : IGameService
             thirdBallPinCount = _bowlService.RollFirstBall();
 
         if (thirdBallPinCount.HasValue)
-            _ = AddRole(bowler, frame, 3, (int)thirdBallPinCount);
+            AddRole(bowler, frame, 3, (int)thirdBallPinCount);
 
     }
 
-    private static IBowler AddRole(IBowler bowler, int frame, int ballNumber, int pinsKnockedDown)
-    {
-        bowler.Frames[frame].Roles[ballNumber] = pinsKnockedDown;
-        return bowler;
-    }
-
-    private static Dictionary<int, IFrame> ClearScoreSheet()
-    {
-        var frames = new Dictionary<int, IFrame>();
-
-        for (int x = 1; x <= 10; x++)
-            frames.Add(x, new Frame());
-
-        return frames;
-    }
+    private static void AddRole(IBowler bowler, int frame, int ballNumber, int pinsKnockedDown) => bowler.Frames[frame].Roles[ballNumber] = pinsKnockedDown;
 }

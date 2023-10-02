@@ -15,19 +15,7 @@ public class BowlService : IBowlService
 
     public int RollSecondBall(int firstBall, BowlerRating rating) => RollBall(10 - firstBall, rating);
 
-    public int RollBall(int pinsRemaining)
-    {
-        try
-        {
-            return Math.Min(_random.Next(0, pinsRemaining + 1), pinsRemaining);
-        }
-        catch (Exception)
-        {
-            // log/handle exception
-        }
-
-        return 0;
-    }
+    public int RollBall(int pinsRemaining) => Math.Min(_random.Next(0, pinsRemaining + 1), pinsRemaining);
 
     public int RollBall(int pinsRemaining, BowlerRating rating)
     {

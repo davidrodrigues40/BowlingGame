@@ -4,6 +4,7 @@ namespace BowlingGame.Abstractions.Services;
 
 public interface IScoreCalculator
 {
-	void CalculateScore(IGame<IBowler> game);
-	void CalculateScore(IGame<IRatedBowler> game);
+    void CalculateScore(IGame<IBowler> game);
+    void CalculateScore(IGame<IRatedBowler> game);
+    Dictionary<int, IFrame> ClearScoreSheet();
 }

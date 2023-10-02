@@ -5,13 +5,18 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Api", "BowlingGame\BowlingGame.Api.csproj", "{854D0A27-F68E-4F4C-B71C-103965DAD8D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.Abstractions", "BowlingGame.Abstractions\BowlingGame.Abstractions.csproj", "{4F134B62-C3F1-4A18-AA49-7EDAF7E58665}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Abstractions", "BowlingGame.Abstractions\BowlingGame.Abstractions.csproj", "{4F134B62-C3F1-4A18-AA49-7EDAF7E58665}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.Core", "BowlingGame.Core\BowlingGame.Core.csproj", "{2FB3975C-F140-42FF-A14B-B6CCCDFD21CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Core", "BowlingGame.Core\BowlingGame.Core.csproj", "{2FB3975C-F140-42FF-A14B-B6CCCDFD21CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.Dto", "BowlingGame.Dto\BowlingGame.Dto.csproj", "{D847EFAF-CE8A-4E20-884A-94BEBFEC8987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Dto", "BowlingGame.Dto\BowlingGame.Dto.csproj", "{D847EFAF-CE8A-4E20-884A-94BEBFEC8987}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingGame.Services", "BowlingGame.Services\BowlingGame.Services.csproj", "{F2638569-CB96-4BAC-B09B-99A9D0CAFCCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Services", "BowlingGame.Services\BowlingGame.Services.csproj", "{F2638569-CB96-4BAC-B09B-99A9D0CAFCCC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2DBE8891-4602-47F8-8494-65AA1DD82EC4}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

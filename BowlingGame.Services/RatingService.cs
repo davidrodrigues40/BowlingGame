@@ -11,11 +11,7 @@ public class RatingService : IRatingService
     {
         foreach (int key in Enum.GetValues(typeof(BowlerRating)))
         {
-            string? name = Enum.GetName(typeof(BowlerRating), key);
-            if (name is null)
-            {
-                continue;
-            }
+            string name = Enum.GetName(typeof(BowlerRating), key)!;
 
             yield return new BowlerRatingModel
             {

@@ -1,7 +1,9 @@
-﻿namespace BowlingGame.Abstractions.Models
+﻿using BowlingGame.Core.Enums;
+
+namespace BowlingGame.Abstractions.Models;
+
+public interface IPlayer
 {
-    public interface IPlayer
-    {
-        string Name { get; set; }
-    }
+    string Name { get; set; }
+    BowlerRating Rating { get; set; }
 }

@@ -1,27 +1,17 @@
 ﻿using BowlingGame.Abstractions.Models;
 using BowlingGame.Abstractions.Services;
 using BowlingGame.Dto.Models;
-using System.Diagnostics;
 
 namespace BowlingGame.Services;
 
 public class ScoreCalculator : IScoreCalculator
 {
-    public void CalculateScore(IGame<IBowler> game)
+
+    public void CalculateScore(IGame game)
     {
         foreach (IBowler bowler in game.Bowlers)
-            CalculateBowlerScore(bowler);
-
-        game.Winner = CalculateWinner(game.Bowlers);
-    }
-
-    public void CalculateScore(IGame<IRatedBowler> game)
-    {
-        foreach (IRatedBowler bowler in game.Bowlers)
         {
             CalculateBowlerScore(bowler);
-            if (bowler.Score == 0)
-                Debugger.Break();
         }
 
         game.Winner = CalculateWinner(game.Bowlers);
@@ -86,7 +76,8 @@ public class ScoreCalculator : IScoreCalculator
         }
         catch (Exception)
         {
-            Debugger.Break();
+            //TODO: Log exception
+            throw;
         }
     }
 

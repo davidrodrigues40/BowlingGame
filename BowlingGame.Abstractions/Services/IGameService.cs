@@ -2,8 +2,8 @@
 
 namespace BowlingGame.Abstractions.Services;
 
-public interface IGameService<T>
+public interface IGameService
 {
-    IGame<T> NewGame(IEnumerable<T> bowlers);
-    IGame<T> PlayGame(IGame<T> game);
+    IGame NewGame(IEnumerable<IBowler> bowlers);
+    IGame PlayGame(IGame game);
 }

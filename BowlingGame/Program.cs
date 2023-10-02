@@ -1,4 +1,5 @@
 using BowlingGame.Api.DependencyInjection;
+using System.Diagnostics.CodeAnalysis;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -31,3 +32,6 @@ app.MapControllers();
 app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.Run();
+
+[ExcludeFromCodeCoverage]
+public partial class Program { }

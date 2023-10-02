@@ -4,28 +4,25 @@ using BowlingGame.Dto.Models;
 
 namespace BowlingGame.Services;
 
-public class GameService : IGameService<IBowler>
+public class GameService : IGameService
 {
-    private readonly IScoreCalculator _scoreCalculator;
     private readonly IBowlService _bowlService;
-    private readonly IEnumerable<IBowler> _bowlers;
-    private readonly IGame<IBowler> _game;
+    private readonly IGame _game;
+    private readonly IScoreCalculator _scoreCalculator;
 
     public GameService(IScoreCalculator scoreCalculator, IBowlService bowlService)
     {
         _scoreCalculator = scoreCalculator;
         _bowlService = bowlService;
-        _bowlers = new List<IBowler>();
-        _game = new Game<IBowler>();
+        _game = new Game();
     }
 
-    public IGame<IBowler> NewGame(IEnumerable<IBowler> bowlers)
+    public IGame NewGame(IEnumerable<IBowler> bowlers)
     {
-        _game.Bowlers = bowlers;
-
         try
         {
-            foreach (IBowler item in _game.Bowlers)
+            _game.Bowlers = bowlers;
+            foreach (IBowler item in bowlers)
             {
                 item.Frames = _scoreCalculator.ClearScoreSheet();
                 item.Score = 0;
@@ -40,13 +37,17 @@ public class GameService : IGameService<IBowler>
         }
     }
 
-    public IGame<IBowler> PlayGame(IGame<IBowler> game)
+    public IGame PlayGame(IGame game)
     {
         try
         {
             for (int frame = 1; frame <= 10; frame++)
             {
-                PlayFrame(frame, game.Bowlers.ElementAt(0));
+                // play frame
+                foreach (IBowler bowler in game.Bowlers)
+                {
+                    PlayFrame(frame, bowler);
+                }
             }
 
             _scoreCalculator.CalculateScore(game);
@@ -68,35 +69,37 @@ public class GameService : IGameService<IBowler>
             return;
         }
 
-        int firstBallPinCount = _bowlService.RollFirstBall();
+        int firstBallPinCount = _bowlService.RollFirstBall(bowler.Rating);
         AddRole(bowler, frame, 1, firstBallPinCount);
 
-        if (firstBallPinCount == 10)
+        if (firstBallPinCount == 10 && frame < 10)
         {
             return;
         }
 
-        int secondBallPinCount = _bowlService.RollSecondBall(firstBallPinCount);
+        int secondBallPinCount = _bowlService.RollSecondBall(firstBallPinCount, bowler.Rating);
 
         AddRole(bowler, frame, 2, secondBallPinCount);
     }
 
     private void PlayTenthFrame(int frame, IBowler bowler)
     {
-        int firstBallPinCount = _bowlService.RollFirstBall();
+        int firstBallPinCount = _bowlService.RollFirstBall(bowler.Rating);
         int secondBallPinCount;
         int? thirdBallPinCount = null;
 
         AddRole(bowler, frame, 1, firstBallPinCount);
 
-        secondBallPinCount = firstBallPinCount == 10 ? _bowlService.RollFirstBall() : _bowlService.RollSecondBall(firstBallPinCount);
+        secondBallPinCount = firstBallPinCount == 10
+            ? _bowlService.RollFirstBall(bowler.Rating)
+            : _bowlService.RollSecondBall(firstBallPinCount, bowler.Rating);
 
         AddRole(bowler, frame, 2, secondBallPinCount);
 
         if (secondBallPinCount == 10) // strike on second ball
-            thirdBallPinCount = _bowlService.RollFirstBall();
-        else if (firstBallPinCount + secondBallPinCount == 10) // spare
-            thirdBallPinCount = _bowlService.RollFirstBall();
+            thirdBallPinCount = _bowlService.RollFirstBall(bowler.Rating);
+        else if (firstBallPinCount + secondBallPinCount >= 10) // spare
+            thirdBallPinCount = _bowlService.RollFirstBall(bowler.Rating);
 
         if (thirdBallPinCount.HasValue)
             AddRole(bowler, frame, 3, (int)thirdBallPinCount);

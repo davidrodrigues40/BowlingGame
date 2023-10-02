@@ -1,7 +1,7 @@
 ﻿namespace BowlingGame.Abstractions.Models;
 
-public interface IGame<T>
+public interface IGame
 {
-	IEnumerable<T> Bowlers { get; set; }
-	IScoreCard? Winner { get; set; }
+    IEnumerable<IBowler> Bowlers { get; set; }
+    IScoreCard? Winner { get; set; }
 }

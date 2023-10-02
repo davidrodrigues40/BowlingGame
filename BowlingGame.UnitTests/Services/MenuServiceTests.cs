@@ -1,8 +1,9 @@
 ﻿using BowlingGame.Abstractions.Models;
+using BowlingGame.Services;
 using NUnit.Framework;
 using System.Diagnostics.CodeAnalysis;
 
-namespace BowlingGame.Services.UnitTests;
+namespace BowlingGame.UnitTests.Services;
 [TestFixture]
 [ExcludeFromCodeCoverage]
 internal class MenuServiceTests

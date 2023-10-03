@@ -1,23 +1,15 @@
 ﻿using BowlingGame.Abstractions.Models;
 using BowlingGame.Abstractions.Services;
 using BowlingGame.Core.Enums;
-using BowlingGame.Dto.Models;
+using BowlingGame.Repository.Factories;
 
 namespace BowlingGame.Services;
 
 public class RatingService : IRatingService
 {
-    public IEnumerable<IBowlerRating> GetRatings()
-    {
-        foreach (int key in Enum.GetValues(typeof(BowlerRating)))
-        {
-            string name = Enum.GetName(typeof(BowlerRating), key)!;
+    private readonly RatingRepositoryResolver _provider;
+    public RatingService(RatingRepositoryResolver provider) => _provider = provider;
 
-            yield return new BowlerRatingModel
-            {
-                Value = name,
-                Key = key
-            };
-        }
-    }
+    public IEnumerable<IBowlerRating> GetRatings() => _provider(DataSource.InMemory).GetRatings();
+    public IEnumerable<IBowlerRating> GetRatings(DataSource dataSource) => _provider(dataSource).GetRatings();
 }

@@ -1,6 +1,8 @@
 ﻿using BowlingGame.Abstractions.Models;
+using BowlingGame.Abstractions.Repositories;
 using BowlingGame.Core.Enums;
 using BowlingGame.Services;
+using Moq;
 using NUnit.Framework;
 using System.Diagnostics.CodeAnalysis;
 
@@ -10,8 +12,9 @@ namespace BowlingGame.UnitTests.Services;
 internal class RatingServiceTests
 {
     private readonly RatingService _service;
+    private readonly Mock<IRatingRepository> _repository = new();
 
-    public RatingServiceTests() => _service = new RatingService();
+    public RatingServiceTests() => _service = new RatingService(_repository.Object);
 
     [Test]
     public void GetRatings_ReturnsRatings()

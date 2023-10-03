@@ -1,5 +1,6 @@
 ﻿using BowlingGame.Abstractions.Services;
 using BowlingGame.Api.Controllers;
+using BowlingGame.Core.Enums;
 using BowlingGame.Dto.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -23,7 +24,7 @@ internal class MenusControllerTest
         _ = _menuService.Setup(x => x.GetMenuItems()).Returns(menuItems);
 
         // Act
-        IActionResult result = _controller.Get();
+        IActionResult result = _controller.Get(DataSource.InMemory);
 
         // Assert
         Assert.That(result, Is.Not.Null);

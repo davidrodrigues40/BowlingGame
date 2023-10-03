@@ -1,4 +1,5 @@
 ﻿using BowlingGame.Abstractions.Services;
+using BowlingGame.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BowlingGame.Api.Controllers;
@@ -11,5 +12,5 @@ public class RatingsController : ControllerBase
     public RatingsController(IRatingService ratingService) => _ratingService = ratingService;
 
     [HttpGet]
-    public IActionResult GetRatings() => Ok(_ratingService.GetRatings());
+    public IActionResult GetRatings(DataSource dataSource) => Ok(_ratingService.GetRatings(dataSource));
 }

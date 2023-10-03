@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BowlingGame.Abstractions\BowlingGame.Abstractions.csproj" />
+    <ProjectReference Include="..\BowlingGame.Code.Repository\BowlingGame.Code.Repository.csproj" />
+    <ProjectReference Include="..\BowlingGame.Core\BowlingGame.Core.csproj" />
+    <ProjectReference Include="..\BowlingGame.File.Repository\BowlingGame.Files.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

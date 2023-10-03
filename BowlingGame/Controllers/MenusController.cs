@@ -1,4 +1,5 @@
 ﻿using BowlingGame.Abstractions.Services;
+using BowlingGame.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BowlingGame.Api.Controllers;
@@ -11,5 +12,5 @@ public class MenusController : ControllerBase
     public MenusController(IMenuService service) => _service = service;
 
     [HttpGet]
-    public IActionResult Get() => Ok(_service.GetMenuItems());
+    public IActionResult Get(DataSource dataSource) => Ok(_service.GetMenuItems(dataSource));
 }

@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BowlingGame.Core\BowlingGame.Core.csproj" />
     <ProjectReference Include="..\BowlingGame.Dto\BowlingGame.Dto.csproj" />
+    <ProjectReference Include="..\BowlingGame.Repository.Factories\BowlingGame.Repository.Factories.csproj" />
   </ItemGroup>
 
 </Project>

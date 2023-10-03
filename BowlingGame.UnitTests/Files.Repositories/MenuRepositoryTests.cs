@@ -18,7 +18,7 @@ internal class MenuRepositoryTests
     {
         // Arrange
         var menu = new JsonMenu<MenuItem>();
-        var menuItem = new MenuItem();
+        var menuItem = new MenuItem() { Value = "Val", Route = "Rte" };
         menu.Items = new List<MenuItem> { menuItem };
 
         await using (FileStream stream = File.Create(_fileRepository.FileName))
@@ -32,6 +32,9 @@ internal class MenuRepositoryTests
         // Assert
         Assert.That(result, Is.Not.Null);
         Assert.That(result, Is.Not.Empty);
+        Assert.That(result.Count(), Is.EqualTo(1));
+        Assert.That(result.First().Value, Is.EqualTo(menuItem.Value));
+        Assert.That(result.First().Route, Is.EqualTo(menuItem.Route));
 
         File.Delete(_fileRepository.FileName);
     }

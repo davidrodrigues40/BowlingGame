@@ -5,9 +5,9 @@ namespace BowlingGame.Dto.Models;
 
 public record MenuItem : IMenuItem
 {
-    [JsonPropertyName("key")]
+    [JsonPropertyName("value")]
     public string Value { get; set; } = string.Empty;
 
-    [JsonPropertyName("value")]
+    [JsonPropertyName("route")]
     public string Route { get; set; } = string.Empty;
 }

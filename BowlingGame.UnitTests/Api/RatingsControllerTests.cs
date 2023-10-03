@@ -1,12 +1,16 @@
 ﻿using BowlingGame.Abstractions.Models;
 using BowlingGame.Abstractions.Services;
 using BowlingGame.Api.Controllers;
+using BowlingGame.Core.Enums;
 using BowlingGame.Dto.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BowlingGame.UnitTests.Api;
+[TestFixture]
+[ExcludeFromCodeCoverage]
 internal class RatingsControllerTests
 {
     private readonly Mock<IRatingService> _ratingServiceMock = new();
@@ -19,10 +23,10 @@ internal class RatingsControllerTests
     {
         // Arrange
         List<IBowlerRating> ratings = new() { new BowlerRatingModel() };
-        _ = _ratingServiceMock.Setup(x => x.GetRatings()).Returns((IEnumerable<IBowlerRating>)ratings);
+        _ = _ratingServiceMock.Setup(x => x.GetRatings(It.IsAny<DataSource>())).Returns((IEnumerable<IBowlerRating>)ratings);
 
         // Act
-        IActionResult result = _controller.GetRatings();
+        IActionResult result = _controller.GetRatings(DataSource.InMemory);
 
         // Assert
         Assert.That(result, Is.Not.Null);

@@ -1,6 +1,8 @@
 ﻿using BowlingGame.Abstractions.Models;
 using BowlingGame.Abstractions.Repositories;
 using BowlingGame.Core.Enums;
+using BowlingGame.Dto.Models;
+using BowlingGame.Repository.Factories;
 using BowlingGame.Services;
 using Moq;
 using NUnit.Framework;
@@ -12,16 +14,23 @@ namespace BowlingGame.UnitTests.Services;
 internal class RatingServiceTests
 {
     private readonly RatingService _service;
+    private readonly Mock<RatingRepositoryProvider> _provider = new();
     private readonly Mock<IRatingRepository> _repository = new();
 
-    public RatingServiceTests() => _service = new RatingService(_repository.Object);
+    public RatingServiceTests() => _service = new RatingService(_provider.Object);
 
     [Test]
     public void GetRatings_ReturnsRatings()
     {
-        IEnumerable<IBowlerRating> result = _service.GetRatings();
+        // Arrange
+        _ = _provider.Setup(f => f(It.IsAny<DataSource>()))
+            .Returns(_repository.Object);
+        _ = _repository.Setup(r => r.GetRatings())
+            .Returns(new List<IBowlerRating>() { new BowlerRatingModel() });
+
+        IEnumerable<IBowlerRating> result = _service.GetRatings(DataSource.InMemory);
 
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.Count(), Is.EqualTo(Enum.GetNames(typeof(BowlerRating)).Length));
+        Assert.That(result.Count(), Is.EqualTo(1));
     }
 }

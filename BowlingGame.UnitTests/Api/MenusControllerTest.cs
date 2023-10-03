@@ -8,6 +8,7 @@ using NUnit.Framework;
 using System.Diagnostics.CodeAnalysis;
 
 namespace BowlingGame.UnitTests.Api;
+[TestFixture]
 [ExcludeFromCodeCoverage]
 internal class MenusControllerTest
 {
@@ -21,7 +22,7 @@ internal class MenusControllerTest
     {
         // Arrange
         List<MenuItem> menuItems = new() { new MenuItem() };
-        _ = _menuService.Setup(x => x.GetMenuItems()).Returns(menuItems);
+        _ = _menuService.Setup(x => x.GetMenuItems(It.IsAny<DataSource>())).Returns(menuItems);
 
         // Act
         IActionResult result = _controller.Get(DataSource.InMemory);

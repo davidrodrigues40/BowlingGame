@@ -5,10 +5,10 @@ using BowlingGame.Core.Enums;
 namespace BowlingGame.Repository.Factories;
 public class RepositoryFactory : IRepositoryFactory
 {
-    private readonly MenuRepositoryResolver _menuProvider;
-    private readonly RatingRepositoryResolver _ratingProvider;
+    private readonly MenuRepositoryProvider _menuProvider;
+    private readonly RatingRepositoryProvider _ratingProvider;
 
-    public RepositoryFactory(MenuRepositoryResolver menuProvider, RatingRepositoryResolver ratingProvider)
+    public RepositoryFactory(MenuRepositoryProvider menuProvider, RatingRepositoryProvider ratingProvider)
     {
         _menuProvider = menuProvider;
         _ratingProvider = ratingProvider;

@@ -5,10 +5,11 @@ using System.Text.Json.Serialization;
 namespace BowlingGame.Files.Repository;
 public abstract class BaseListFileRepository<T> where T : class
 {
+    public abstract string FileName { get; }
+
     protected static IEnumerable<T> Get(string fileName)
     {
-        string? directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        if (directory is null) return new List<T>();
+        string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
 
         string? filePath = $"{directory}\\{fileName}";
         if (!File.Exists(filePath)) return new List<T>();
@@ -20,7 +21,7 @@ public abstract class BaseListFileRepository<T> where T : class
     }
 }
 
-internal class JsonMenu<T>
+public class JsonMenu<T>
 {
     [JsonPropertyName("items")]
     public List<T> Items { get; set; } = new List<T>();

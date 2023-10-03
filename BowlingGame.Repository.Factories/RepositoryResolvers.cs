@@ -3,5 +3,5 @@ using BowlingGame.Core.Enums;
 
 namespace BowlingGame.Repository.Factories;
 
-public delegate IMenuRepository MenuRepositoryResolver(DataSource key);
-public delegate IRatingRepository RatingRepositoryResolver(DataSource key);
+public delegate IMenuRepository MenuRepositoryProvider(DataSource key);
+public delegate IRatingRepository RatingRepositoryProvider(DataSource key);

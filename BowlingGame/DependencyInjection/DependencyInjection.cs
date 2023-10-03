@@ -24,7 +24,7 @@ public static class DependencyInjection
 
         // resolvers
         _ = services
-            .AddTransient<MenuRepositoryResolver>(provider => key =>
+            .AddTransient<MenuRepositoryProvider>(provider => key =>
             {
                 return key switch
                 {
@@ -33,7 +33,7 @@ public static class DependencyInjection
                     _ => throw new KeyNotFoundException(key.ToString()),
                 };
             })
-            .AddTransient<RatingRepositoryResolver>(provider => key =>
+            .AddTransient<RatingRepositoryProvider>(provider => key =>
             {
                 return key switch
                 {

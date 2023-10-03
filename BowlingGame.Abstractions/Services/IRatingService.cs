@@ -5,6 +5,5 @@ namespace BowlingGame.Abstractions.Services;
 
 public interface IRatingService
 {
-    IEnumerable<IBowlerRating> GetRatings();
     IEnumerable<IBowlerRating> GetRatings(DataSource dataSource);
 }

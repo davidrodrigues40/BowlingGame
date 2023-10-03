@@ -5,6 +5,5 @@ namespace BowlingGame.Abstractions.Services;
 
 public interface IMenuService
 {
-    IEnumerable<IMenuItem> GetMenuItems();
     IEnumerable<IMenuItem> GetMenuItems(DataSource dataSource);
 }

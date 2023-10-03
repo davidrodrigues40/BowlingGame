@@ -1,27 +1,15 @@
 ﻿using BowlingGame.Abstractions.Models;
-using BowlingGame.Abstractions.Repositories;
 using BowlingGame.Abstractions.Services;
 using BowlingGame.Core.Enums;
+using BowlingGame.Repository.Factories;
 
 namespace BowlingGame.Services;
 
 public class MenuService : IMenuService
 {
-    private readonly IRepositoryFactory _factory;
+    private readonly MenuRepositoryProvider _provider;
 
-    public MenuService(IRepositoryFactory factory) => _factory = factory;
+    public MenuService(MenuRepositoryProvider provider) => _provider = provider;
 
-    public IEnumerable<IMenuItem> GetMenuItems()
-    {
-        IMenuRepository? repository = _factory.CreateMenuRepository(DataSource.InMemory);
-
-        return repository is null ? throw new InvalidOperationException("Repository is null") : repository.GetMenuItems();
-    }
-
-    public IEnumerable<IMenuItem> GetMenuItems(DataSource dataSource)
-    {
-        IMenuRepository? repository = _factory.CreateMenuRepository(dataSource);
-
-        return repository is null ? throw new InvalidOperationException("Repository is null") : repository.GetMenuItems();
-    }
+    public IEnumerable<IMenuItem> GetMenuItems(DataSource dataSource) => _provider(dataSource).GetMenuItems();
 }

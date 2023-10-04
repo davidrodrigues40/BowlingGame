@@ -32,7 +32,6 @@ public class GameService : IGameService
         }
         catch (Exception)
         {
-            // TODO: log exception
             throw;
         }
     }
@@ -56,7 +55,6 @@ public class GameService : IGameService
         }
         catch (Exception)
         {
-            // TODO: log exception
             throw;
         }
     }

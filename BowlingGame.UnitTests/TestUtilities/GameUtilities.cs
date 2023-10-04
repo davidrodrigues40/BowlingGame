@@ -55,7 +55,7 @@ internal static class GameUtilities
         };
 
         if (thirdBall != null)
-            frames.Last().Roles.Add(3, (int)thirdBall);
+            frames[^1].Roles.Add(3, (int)thirdBall);
 
         return new Bowler() { Name = name, Frames = frames.ToDictionary(x => frames.IndexOf(x) + 1, x => x) };
     }

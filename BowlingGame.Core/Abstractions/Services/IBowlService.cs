@@ -6,5 +6,5 @@ public interface IBowlService
 {
     int RollFirstBall(BowlerRating rating);
     int RollSecondBall(int firstBall, BowlerRating rating);
-    int RollBall(int pinsRemating, BowlerRating rating);
+    int RollBall(int pinsRemaining, BowlerRating rating);
 }

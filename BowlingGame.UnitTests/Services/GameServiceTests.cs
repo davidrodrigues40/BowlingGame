@@ -17,7 +17,6 @@ internal class GameServiceTests
     private readonly Mock<IScoreCalculator> _scoreCalculator = new();
     private readonly Mock<IBowlService> _bowlService = new();
     private readonly Bowler _bowler = new();
-    private readonly Game _game = new();
 
     public GameServiceTests() => _service = new GameService(_scoreCalculator.Object, _bowlService.Object);
 
@@ -121,6 +120,6 @@ internal class GameServiceTests
         _ = _scoreCalculator.Setup(x => x.CalculateScore(It.IsAny<IGame>())).Throws(new Exception());
 
         // Act/Assert
-        _ = Assert.Throws<Exception>(() => _service.PlayGame(_game));
+        _ = Assert.Throws<Exception>(() => _service.PlayGame(game));
     }
 }

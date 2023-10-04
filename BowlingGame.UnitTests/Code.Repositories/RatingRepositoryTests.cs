@@ -14,11 +14,8 @@ internal class RatingRepositoryTests
     [Test]
     public void GetMenuItems_WhenCalled_ReturnsItems()
     {
-        // Arrange
-        RatingRepository repository = new();
-
         // Act
-        IEnumerable<IBowlerRating> items = repository.GetRatings();
+        IEnumerable<IBowlerRating> items = _repository.GetRatings();
 
         // Assert
         Assert.That(items, Is.Not.Null);

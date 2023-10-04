@@ -35,8 +35,7 @@ public class ScoreCalculator : IScoreCalculator
         {
             if (bowler.Score == winner.Score && bowler.Name != winner.Name)
                 winner.Name += $" and {bowler.Name}";
-            else
-            if (bowler.Score > winner.Score)
+            else if (bowler.Score > winner.Score)
                 winner = winner with { Name = bowler.Name, Score = bowler.Score };
         }
 
@@ -76,7 +75,6 @@ public class ScoreCalculator : IScoreCalculator
         }
         catch (Exception)
         {
-            //TODO: Log exception
             throw;
         }
     }

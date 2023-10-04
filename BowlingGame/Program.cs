@@ -34,4 +34,7 @@ app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(
 app.Run();
 
 [ExcludeFromCodeCoverage]
-public partial class Program { }
+public partial class Program
+{
+    protected Program() { }
+}

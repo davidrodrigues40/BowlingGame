@@ -13,11 +13,8 @@ internal class MenuRepositoryTests
     [Test]
     public void GetMenuItems_WhenCalled_ReturnsItems()
     {
-        // Arrange
-        MenuRepository repository = new();
-
         // Act
-        IEnumerable<IMenuItem> items = repository.GetMenuItems();
+        IEnumerable<IMenuItem> items = _repository.GetMenuItems();
 
         // Assert
         Assert.That(items, Is.Not.Null);

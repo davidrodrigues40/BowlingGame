@@ -1,6 +1,6 @@
 ﻿using BowlingGame.Core.Enums;
 
-namespace BowlingGame.Abstractions.Models;
+namespace BowlingGame.Core.Abstractions.Models;
 
 public interface IPlayer
 {

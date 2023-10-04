@@ -1,4 +1,4 @@
-﻿using BowlingGame.Abstractions.Models;
+﻿using BowlingGame.Core.Abstractions.Models;
 using System.Text.Json.Serialization;
 
 namespace BowlingGame.Dto.Models;

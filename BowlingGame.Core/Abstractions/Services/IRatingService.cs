@@ -1,7 +1,7 @@
-﻿using BowlingGame.Abstractions.Models;
+﻿using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Core.Enums;
 
-namespace BowlingGame.Abstractions.Services;
+namespace BowlingGame.Core.Abstractions.Services;
 
 public interface IRatingService
 {

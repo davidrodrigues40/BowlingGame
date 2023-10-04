@@ -1,4 +1,4 @@
-﻿using BowlingGame.Abstractions.Models;
+﻿using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Dto.Models;
 using System.Diagnostics.CodeAnalysis;
 

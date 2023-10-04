@@ -1,4 +1,4 @@
-﻿namespace BowlingGame.Abstractions.Models;
+﻿namespace BowlingGame.Core.Abstractions.Models;
 
 public interface IBowlerRating
 {

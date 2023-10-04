@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BowlingGame.Abstractions\BowlingGame.Abstractions.csproj" />
     <ProjectReference Include="..\BowlingGame.Code.Repository\BowlingGame.Code.Repository.csproj" />
     <ProjectReference Include="..\BowlingGame.Core\BowlingGame.Core.csproj" />
     <ProjectReference Include="..\BowlingGame.File.Repository\BowlingGame.Files.Repository.csproj" />

@@ -1,6 +1,6 @@
-﻿using BowlingGame.Abstractions.Models;
+﻿using BowlingGame.Core.Abstractions.Models;
 
-namespace BowlingGame.Abstractions.Services;
+namespace BowlingGame.Core.Abstractions.Services;
 public interface IPlayerService
 {
     IEnumerable<IBowler> GenerateBowlers(IEnumerable<IPlayer> players);

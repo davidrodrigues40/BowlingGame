@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BowlingGame.Abstractions\BowlingGame.Abstractions.csproj" />
+    <ProjectReference Include="..\BowlingGame.Core\BowlingGame.Core.csproj" />
     <ProjectReference Include="..\BowlingGame.Dto\BowlingGame.Dto.csproj" />
   </ItemGroup>
 

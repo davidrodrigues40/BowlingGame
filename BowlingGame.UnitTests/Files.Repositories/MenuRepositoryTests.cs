@@ -1,4 +1,5 @@
-﻿using BowlingGame.Abstractions.Repositories;
+﻿using BowlingGame.Core.Abstractions.Models;
+using BowlingGame.Core.Abstractions.Repositories;
 using BowlingGame.Dto.Models;
 using BowlingGame.Files.Repository;
 using NUnit.Framework;
@@ -27,7 +28,7 @@ internal class MenuRepositoryTests
         }
 
         // Act
-        IEnumerable<Abstractions.Models.IMenuItem> result = _repository.GetMenuItems();
+        IEnumerable<IMenuItem> result = _repository.GetMenuItems();
 
         // Assert
         Assert.That(result, Is.Not.Null);
@@ -45,7 +46,7 @@ internal class MenuRepositoryTests
         if (File.Exists(_fileRepository.FileName)) File.Delete(_fileRepository.FileName);
 
         // Act
-        IEnumerable<Abstractions.Models.IMenuItem> result = _repository.GetMenuItems();
+        IEnumerable<IMenuItem> result = _repository.GetMenuItems();
 
         // Assert
         Assert.That(result, Is.Not.Null);
@@ -63,7 +64,7 @@ internal class MenuRepositoryTests
         }
 
         // Act
-        IEnumerable<Abstractions.Models.IMenuItem> result = _repository.GetMenuItems();
+        IEnumerable<IMenuItem> result = _repository.GetMenuItems();
 
         // Assert
         Assert.That(result, Is.Empty);

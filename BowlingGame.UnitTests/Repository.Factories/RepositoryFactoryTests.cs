@@ -1,4 +1,4 @@
-﻿using BowlingGame.Abstractions.Repositories;
+﻿using BowlingGame.Core.Abstractions.Repositories;
 using BowlingGame.Core.Enums;
 using BowlingGame.Repository.Factories;
 using Moq;

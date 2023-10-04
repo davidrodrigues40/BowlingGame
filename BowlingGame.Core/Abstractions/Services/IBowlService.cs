@@ -1,6 +1,6 @@
 ﻿using BowlingGame.Core.Enums;
 
-namespace BowlingGame.Abstractions.Services;
+namespace BowlingGame.Core.Abstractions.Services;
 
 public interface IBowlService
 {

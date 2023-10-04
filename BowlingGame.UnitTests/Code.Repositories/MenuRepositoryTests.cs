@@ -1,5 +1,5 @@
-﻿using BowlingGame.Abstractions.Models;
-using BowlingGame.Code.Repository;
+﻿using BowlingGame.Code.Repository;
+using BowlingGame.Core.Abstractions.Models;
 using NUnit.Framework;
 using System.Diagnostics.CodeAnalysis;
 

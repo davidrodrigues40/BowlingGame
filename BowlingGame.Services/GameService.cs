@@ -1,5 +1,5 @@
-﻿using BowlingGame.Abstractions.Models;
-using BowlingGame.Abstractions.Services;
+﻿using BowlingGame.Core.Abstractions.Models;
+using BowlingGame.Core.Abstractions.Services;
 using BowlingGame.Dto.Models;
 
 namespace BowlingGame.Services;

@@ -1,6 +1,6 @@
-﻿using BowlingGame.Abstractions.Models;
-using BowlingGame.Abstractions.Services;
-using BowlingGame.Api.Controllers;
+﻿using BowlingGame.Api.Controllers;
+using BowlingGame.Core.Abstractions.Models;
+using BowlingGame.Core.Abstractions.Services;
 using BowlingGame.Core.Enums;
 using BowlingGame.Dto.Models;
 using Microsoft.AspNetCore.Mvc;

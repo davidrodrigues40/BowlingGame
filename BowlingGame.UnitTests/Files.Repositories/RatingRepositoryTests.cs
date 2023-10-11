@@ -1,6 +1,6 @@
 ﻿using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Core.Abstractions.Repositories;
-using BowlingGame.Dto.Models;
+using BowlingGame.Core.Models;
 using BowlingGame.Files.Repository;
 using NUnit.Framework;
 using System.Diagnostics.CodeAnalysis;

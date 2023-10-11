@@ -2,7 +2,7 @@
 using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Core.Abstractions.Services;
 using BowlingGame.Core.Enums;
-using BowlingGame.Dto.Models;
+using BowlingGame.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;

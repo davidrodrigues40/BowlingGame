@@ -1,5 +1,5 @@
 ﻿using BowlingGame.Core.Abstractions.Models;
-using BowlingGame.Dto.Models;
+using BowlingGame.Core.Models;
 using BowlingGame.Services;
 using BowlingGame.UnitTests.TestUtilities;
 using NUnit.Framework;

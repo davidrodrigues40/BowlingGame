@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BowlingGame.Core\BowlingGame.Core.csproj" />
-    <ProjectReference Include="..\BowlingGame.Dto\BowlingGame.Dto.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Core.Abstractions.Services;
-using BowlingGame.Dto.Models;
+using BowlingGame.Core.Models;
 
 namespace BowlingGame.Services;
 public class PlayerService : IPlayerService

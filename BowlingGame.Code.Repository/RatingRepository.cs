@@ -1,7 +1,7 @@
 ﻿using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Core.Abstractions.Repositories;
 using BowlingGame.Core.Enums;
-using BowlingGame.Dto.Models;
+using BowlingGame.Core.Models;
 
 namespace BowlingGame.Code.Repository;
 public class RatingRepository : IRatingRepository

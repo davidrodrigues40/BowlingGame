@@ -1,6 +1,6 @@
 ﻿using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Core.Enums;
-using BowlingGame.Dto.Models;
+using BowlingGame.Core.Models;
 using BowlingGame.Services;
 using NUnit.Framework;
 using System.Diagnostics.CodeAnalysis;

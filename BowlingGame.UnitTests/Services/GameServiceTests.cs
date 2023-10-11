@@ -1,7 +1,7 @@
 ﻿using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Core.Abstractions.Services;
 using BowlingGame.Core.Enums;
-using BowlingGame.Dto.Models;
+using BowlingGame.Core.Models;
 using BowlingGame.Services;
 using BowlingGame.UnitTests.TestUtilities;
 using Moq;

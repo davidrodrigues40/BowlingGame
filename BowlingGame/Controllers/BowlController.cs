@@ -1,5 +1,5 @@
 ﻿using BowlingGame.Core.Abstractions.Services;
-using BowlingGame.Dto.Models;
+using BowlingGame.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BowlingGame.Api.Controllers;

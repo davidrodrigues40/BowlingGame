@@ -14,7 +14,7 @@ namespace BowlingGame.UnitTests.Services;
 internal class RatingServiceTests
 {
     private readonly RatingService _service;
-    private readonly Mock<RatingRepositoryProvider> _provider = new();
+    private readonly Mock<RatingRepository> _provider = new();
     private readonly Mock<IRatingRepository> _repository = new();
 
     public RatingServiceTests() => _service = new RatingService(_provider.Object);

@@ -14,7 +14,7 @@ namespace BowlingGame.UnitTests.Services;
 internal class MenuServiceTests
 {
     private readonly MenuService _service;
-    private readonly Mock<MenuRepositoryProvider> _provider = new();
+    private readonly Mock<MenuRepository> _provider = new();
     private readonly Mock<IMenuRepository> _repository = new();
 
     public MenuServiceTests() => _service = new MenuService(_provider.Object);

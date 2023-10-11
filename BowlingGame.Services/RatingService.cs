@@ -7,8 +7,8 @@ namespace BowlingGame.Services;
 
 public class RatingService : IRatingService
 {
-    private readonly RatingRepositoryProvider _provider;
-    public RatingService(RatingRepositoryProvider provider) => _provider = provider;
+    private readonly RatingRepository _provider;
+    public RatingService(RatingRepository provider) => _provider = provider;
 
     public IEnumerable<IBowlerRating> GetRatings(DataSource dataSource) => _provider(dataSource).GetRatings();
 }

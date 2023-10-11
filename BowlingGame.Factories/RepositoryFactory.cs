@@ -2,7 +2,7 @@
 using BowlingGame.Core.Abstractions.Services;
 using BowlingGame.Core.Enums;
 
-namespace BowlingGame.Repository.Factories;
+namespace BowlingGame.Factories;
 public class RepositoryFactory : IRepositoryFactory
 {
     private readonly MenuRepository _menuProvider;

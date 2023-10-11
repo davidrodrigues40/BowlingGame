@@ -1,6 +1,6 @@
 ﻿using BowlingGame.Core.Abstractions.Services;
 using BowlingGame.Core.Enums;
-using BowlingGame.Repository.Factories;
+using BowlingGame.Factories;
 using BowlingGame.Services;
 using System.Diagnostics.CodeAnalysis;
 
@@ -10,9 +10,6 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
-        // factories
-        _ = services.AddScoped<IRepositoryFactory, RepositoryFactory>();
-
         // services
         _ = services.AddScoped<IRatingService, RatingService>()
          .AddScoped<IGameService, GameService>()
@@ -24,7 +21,7 @@ public static class DependencyInjection
 
         // resolvers
         _ = services
-            .AddTransient<MenuRepositoryProvider>(provider => key =>
+            .AddTransient<MenuRepository>(provider => key =>
             {
                 return key switch
                 {
@@ -33,7 +30,7 @@ public static class DependencyInjection
                     _ => throw new KeyNotFoundException(key.ToString()),
                 };
             })
-            .AddTransient<RatingRepositoryProvider>(provider => key =>
+            .AddTransient<RatingRepository>(provider => key =>
             {
                 return key switch
                 {

@@ -3,6 +3,10 @@ using BowlingGame.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BowlingGame.Api.Controllers;
+/// <summary>
+/// This controller is used to get the ratings.
+/// It uses a factory architecture to get the ratings from the correct repository.
+/// </summary>
 [Route("api/ratings")]
 [ApiController]
 public class RatingsController : ControllerBase

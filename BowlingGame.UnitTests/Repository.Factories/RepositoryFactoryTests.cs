@@ -1,6 +1,6 @@
 ﻿using BowlingGame.Core.Abstractions.Repositories;
 using BowlingGame.Core.Enums;
-using BowlingGame.Repository.Factories;
+using BowlingGame.Factories;
 using Moq;
 using NUnit.Framework;
 using System.Diagnostics.CodeAnalysis;
@@ -11,13 +11,13 @@ namespace BowlingGame.UnitTests.Repository.Factories;
 internal class RepositoryFactoryTests
 {
     private readonly RepositoryFactory _factory;
-    private readonly Mock<MenuRepositoryProvider> _menuProvider;
-    private readonly Mock<RatingRepositoryProvider> _ratingProvider;
+    private readonly Mock<MenuRepository> _menuProvider;
+    private readonly Mock<RatingRepository> _ratingProvider;
 
     public RepositoryFactoryTests()
     {
-        _menuProvider = new Mock<MenuRepositoryProvider>();
-        _ratingProvider = new Mock<RatingRepositoryProvider>();
+        _menuProvider = new Mock<MenuRepository>();
+        _ratingProvider = new Mock<RatingRepository>();
         _factory = new RepositoryFactory(_menuProvider.Object, _ratingProvider.Object);
     }
 

@@ -3,6 +3,10 @@ using BowlingGame.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BowlingGame.Api.Controllers;
+/// <summary>
+/// This controller is used to get the menu items.
+/// It uses a factory architecture to get the menu items from the correct repository.
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class MenusController : ControllerBase

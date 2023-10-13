@@ -10,6 +10,9 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
+        // factories
+        _ = services.AddScoped<IRepositoryFactory, RepositoryFactory>();
+
         // services
         _ = services.AddScoped<IRatingService, RatingService>()
          .AddScoped<IGameService, GameService>()
@@ -42,7 +45,7 @@ public static class DependencyInjection
 
         // repositories
         _ = services.AddScoped<Files.Repository.MenuRepository>()
-         .AddScoped<Code.Repository.MenuRepository>()
+            .AddScoped<Code.Repository.MenuRepository>()
             .AddScoped<Files.Repository.RatingRepository>()
             .AddScoped<Code.Repository.RatingRepository>();
 

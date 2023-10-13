@@ -1,15 +1,14 @@
 ﻿using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Core.Abstractions.Services;
 using BowlingGame.Core.Enums;
-using BowlingGame.Repository.Factories;
 
 namespace BowlingGame.Services;
 
 public class MenuService : IMenuService
 {
-    private readonly MenuRepository _provider;
+    private readonly IRepositoryFactory _factory;
 
-    public MenuService(MenuRepository provider) => _provider = provider;
+    public MenuService(IRepositoryFactory factory) => _factory = factory;
 
-    public IEnumerable<IMenuItem> GetMenuItems(DataSource dataSource) => _provider(dataSource).GetMenuItems();
+    public IEnumerable<IMenuItem> GetMenuItems(DataSource dataSource) => _factory.CreateMenuRepository(dataSource)!.GetMenuItems();
 }

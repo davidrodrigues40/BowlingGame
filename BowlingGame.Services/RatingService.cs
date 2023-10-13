@@ -1,14 +1,13 @@
 ﻿using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Core.Abstractions.Services;
 using BowlingGame.Core.Enums;
-using BowlingGame.Repository.Factories;
 
 namespace BowlingGame.Services;
 
 public class RatingService : IRatingService
 {
-    private readonly RatingRepository _provider;
-    public RatingService(RatingRepository provider) => _provider = provider;
+    private readonly IRepositoryFactory _factory;
+    public RatingService(IRepositoryFactory factory) => _factory = factory;
 
-    public IEnumerable<IBowlerRating> GetRatings(DataSource dataSource) => _provider(dataSource).GetRatings();
+    public IEnumerable<IBowlerRating> GetRatings(DataSource dataSource) => _factory.CreateRatingRepository(dataSource)!.GetRatings();
 }

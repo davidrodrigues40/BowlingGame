@@ -1,8 +1,8 @@
 ﻿using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Core.Abstractions.Repositories;
+using BowlingGame.Core.Abstractions.Services;
 using BowlingGame.Core.Enums;
 using BowlingGame.Core.Models;
-using BowlingGame.Repository.Factories;
 using BowlingGame.Services;
 using Moq;
 using NUnit.Framework;
@@ -14,16 +14,16 @@ namespace BowlingGame.UnitTests.Services;
 internal class RatingServiceTests
 {
     private readonly RatingService _service;
-    private readonly Mock<RatingRepository> _provider = new();
+    private readonly Mock<IRepositoryFactory> _factory = new();
     private readonly Mock<IRatingRepository> _repository = new();
 
-    public RatingServiceTests() => _service = new RatingService(_provider.Object);
+    public RatingServiceTests() => _service = new RatingService(_factory.Object);
 
     [Test]
     public void GetRatings_ReturnsRatings()
     {
         // Arrange
-        _ = _provider.Setup(f => f(It.IsAny<DataSource>()))
+        _ = _factory.Setup(f => f.CreateRatingRepository(It.IsAny<DataSource>()))
             .Returns(_repository.Object);
         _ = _repository.Setup(r => r.GetRatings())
             .Returns(new List<IBowlerRating>() { new BowlerRatingModel() });

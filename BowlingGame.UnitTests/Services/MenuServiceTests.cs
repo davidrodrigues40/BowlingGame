@@ -1,8 +1,8 @@
 ﻿using BowlingGame.Core.Abstractions.Models;
 using BowlingGame.Core.Abstractions.Repositories;
+using BowlingGame.Core.Abstractions.Services;
 using BowlingGame.Core.Enums;
 using BowlingGame.Core.Models;
-using BowlingGame.Repository.Factories;
 using BowlingGame.Services;
 using Moq;
 using NUnit.Framework;
@@ -14,16 +14,16 @@ namespace BowlingGame.UnitTests.Services;
 internal class MenuServiceTests
 {
     private readonly MenuService _service;
-    private readonly Mock<MenuRepository> _provider = new();
+    private readonly Mock<IRepositoryFactory> _factory = new();
     private readonly Mock<IMenuRepository> _repository = new();
 
-    public MenuServiceTests() => _service = new MenuService(_provider.Object);
+    public MenuServiceTests() => _service = new MenuService(_factory.Object);
 
     [Test]
     public void GetMenuItems_ReturnsItems()
     {
         // Arrange
-        _ = _provider.Setup(f => f(It.IsAny<DataSource>()))
+        _ = _factory.Setup(f => f.CreateMenuRepository(It.IsAny<DataSource>()))
             .Returns(_repository.Object);
         _ = _repository.Setup(r => r.GetMenuItems())
             .Returns(new List<IMenuItem>() { new MenuItem() });

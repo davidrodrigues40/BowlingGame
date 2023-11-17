@@ -13,6 +13,9 @@ public class BowlService : IBowlService
 
     public int RollBall(int pinsRemaining, BowlerRating rating)
     {
+        if (rating > 0)
+            rating -= 1;
+
         int handycap = (int)rating * 3;
 
         int pinsKnockedDown = _random.Next(handycap, pinsRemaining + handycap);

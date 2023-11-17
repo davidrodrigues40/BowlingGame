@@ -9,8 +9,12 @@
       "route": "facts"
     },
     {
-      "value": "Bowling",
-      "route": "bowling"
+      "value": "Bowling Version 1",
+      "route": "bowling-v1"
+    },
+    {
+      "value": "Bowling Version 2",
+      "route": "bowling-v2"
     }
   ]
 }

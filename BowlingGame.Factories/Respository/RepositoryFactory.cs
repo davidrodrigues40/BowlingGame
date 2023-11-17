@@ -1,6 +1,7 @@
 ﻿using BowlingGame.Core.Abstractions.Repositories;
 using BowlingGame.Core.Abstractions.Services;
 using BowlingGame.Core.Enums;
+using BowlingGame.Factories.Respository;
 
 namespace BowlingGame.Factories;
 public class RepositoryFactory : IRepositoryFactory

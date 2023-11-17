@@ -1,6 +1,6 @@
 ﻿using BowlingGame.Core.Abstractions.Repositories;
 using BowlingGame.Core.Enums;
-using BowlingGame.Factories;
+using BowlingGame.Factories.Respository;
 using Moq;
 using NUnit.Framework;
 using System.Diagnostics.CodeAnalysis;

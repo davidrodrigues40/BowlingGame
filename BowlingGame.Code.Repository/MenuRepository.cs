@@ -5,13 +5,13 @@ using BowlingGame.Core.Models;
 namespace BowlingGame.Code.Repository;
 public class MenuRepository : IMenuRepository
 {
-    private readonly string[] _items = { "Books", "Facts", "Bowling" };
+    private readonly string[] _routes = { "books", "facts", "bowling-v1", "bowling-v2" };
+    private readonly string[] _items = { "Books", "Facts", "Bowling Version 1", "Bowling Version 2" };
     public IEnumerable<IMenuItem> GetMenuItems()
     {
-        Array.Sort(_items);
-        foreach (string item in _items)
+        foreach (string route in _routes)
         {
-            yield return new MenuItem { Value = item, Route = item.ToLower() };
+            yield return new MenuItem { Value = _items[Array.IndexOf(_routes, route)], Route = route };
         }
     }
 }

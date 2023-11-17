@@ -104,5 +104,5 @@ public class GameService : IGameService
 
     }
 
-    private static void AddRole(IBowler bowler, int frame, int ballNumber, int pinsKnockedDown) => bowler.Frames[frame].Roles[ballNumber] = pinsKnockedDown;
+    private static void AddRole(IBowler bowler, int frame, int ballNumber, int pinsKnockedDown) => bowler.Frames[frame].Rolls[ballNumber] = pinsKnockedDown;
 }

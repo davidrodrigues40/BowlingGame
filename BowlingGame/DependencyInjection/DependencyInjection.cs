@@ -1,8 +1,11 @@
 ﻿using BowlingGame.Core.Abstractions.Services;
+using BowlingGame.Core.Abstractions.Services.v2;
 using BowlingGame.Core.Enums;
 using BowlingGame.Factories;
+using BowlingGame.Factories.Respository;
 using BowlingGame.Services;
 using System.Diagnostics.CodeAnalysis;
+using v2Services = BowlingGame.Services.v2;
 
 namespace BowlingGame.Api.DependencyInjection;
 [ExcludeFromCodeCoverage]
@@ -16,11 +19,13 @@ public static class DependencyInjection
         // services
         _ = services.AddScoped<IRatingService, RatingService>()
          .AddScoped<IGameService, GameService>()
+         .AddScoped<IGameServiceV2, v2Services.GameService>()
          .AddScoped<IBowlService, BowlService>()
          .AddScoped<IPlayerService, PlayerService>()
          .AddScoped<IScoreCalculator, ScoreCalculator>()
          .AddScoped<IMenuService, MenuService>()
-         .AddScoped<IRatingService, RatingService>();
+         .AddScoped<IRatingService, RatingService>()
+         .AddScoped<IScorecardGenerator, v2Services.ScorecardGenerator>();
 
         // resolvers
         _ = services

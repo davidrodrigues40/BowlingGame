@@ -42,20 +42,20 @@ internal static class GameUtilities
     {
         List<IFrame> frames = new()
         {
-            new Frame() { Roles = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, firstBall }, {2, secondBall } } },
         };
 
         if (thirdBall != null)
-            frames[^1].Roles.Add(3, (int)thirdBall);
+            frames[^1].Rolls.Add(3, (int)thirdBall);
 
         return new Bowler() { Name = name, Frames = frames.ToDictionary(x => frames.IndexOf(x) + 1, x => x) };
     }
@@ -64,16 +64,16 @@ internal static class GameUtilities
     {
         List<IFrame> frames = new()
         {
-            new Frame() { Roles = new Dictionary<int, int> { { 1, 9 }, {2, 1 } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, 10 } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, 9 }, {2, 1 } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, 10 } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, 9 }, {2, 1 } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, 10 } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, 9 }, {2, 1 } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, 10 } }},
-            new Frame() { Roles = new Dictionary<int, int> { { 1, 9 }, {2, 1 } } },
-            new Frame() { Roles = new Dictionary<int, int> { { 1, 10 }, { 2, 9 }, {3, 10 } } }
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, 9 }, {2, 1 } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, 10 } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, 9 }, {2, 1 } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, 10 } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, 9 }, {2, 1 } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, 10 } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, 9 }, {2, 1 } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, 10 } }},
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, 9 }, {2, 1 } } },
+            new Frame() { Rolls = new Dictionary<int, int> { { 1, 10 }, { 2, 9 }, {3, 10 } } }
         };
 
         return new Bowler() { Name = "Consistant", Frames = frames.ToDictionary(x => frames.IndexOf(x) + 1, x => x) };

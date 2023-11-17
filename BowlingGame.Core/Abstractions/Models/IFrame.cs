@@ -2,6 +2,6 @@
 
 public interface IFrame
 {
-    Dictionary<int, int> Roles { get; set; }
+    Dictionary<int, int> Rolls { get; set; }
     int Score { get; set; }
 }

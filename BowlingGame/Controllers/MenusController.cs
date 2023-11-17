@@ -7,7 +7,7 @@ namespace BowlingGame.Api.Controllers;
 /// This controller is used to get the menu items.
 /// It uses a factory architecture to get the menu items from the correct repository.
 /// </summary>
-[Route("api/[controller]")]
+[Route("api/menus")]
 [ApiController]
 public class MenusController : ControllerBase
 {

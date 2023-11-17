@@ -2,18 +2,22 @@
   "items": [
     {
       "key": 0,
-      "value": "Beginner"
+      "value": "Not Selected"
     },
-{
+    {
       "key": 1,
-      "value": "Intermediate"
+      "value": "Beginner"
     },
     {
       "key": 2,
+      "value": "Intermediate"
+    },
+    {
+      "key": 3,
       "value": "Advanced"
     },
-{
-      "key": 3,
+    {
+      "key": 4,
       "value": "Expert"
     }
   ]

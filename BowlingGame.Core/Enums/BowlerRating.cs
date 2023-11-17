@@ -2,8 +2,9 @@
 
 public enum BowlerRating
 {
-    Beginner = 0,
-    Intermediate = 1,
-    Advanced = 2,
-    Expert = 3
+    NotSelected = 0,
+    Beginner = 1,
+    Intermediate = 2,
+    Advanced = 3,
+    Expert = 4
 }
